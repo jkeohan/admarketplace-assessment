@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { loremIpsum } from "lorem-ipsum";
+import { loremIpsum } from 'lorem-ipsum';
 
 import Comment from '../Components/Comment';
 import AddComment from '../Components/AddComment';
-import InvalidPost from '../Pages/InvalidPost'
+import InvalidPost from '../Pages/InvalidPost';
 
-import { getSinglePost, getComments, postComment } from '../services/api-helper';
+import {
+  getSinglePost,
+  getComments,
+  postComment
+} from '../services/api-helper';
 
 const Post = (props) => {
   const [post, setPost] = useState({});
@@ -18,32 +22,30 @@ const Post = (props) => {
     }
   ]);
   const postId = props.match.params.postId;
-  
+
   useEffect(() => {
     const makeApiCall = async () => {
       const post = await getSinglePost(postId);
-      console.log('useEffect - post', post)
-      const comments = await getComments(postId)
+      console.log('useEffect - post', post);
+      const comments = await getComments(postId);
       setPost(post);
-      setComments(comments)
+      setComments(comments);
     };
     makeApiCall();
   }, []);
 
   const handleAddComment = async (comment) => {
     console.log('comment', comment);
-    const resp = await postComment(comment)
-    console.log('resp', resp)
+    const resp = await postComment(comment);
+    console.log('resp', resp);
     if (resp.id === 501) {
       const commentObj = {
-        name:   loremIpsum({ count: 1}),
+        name: loremIpsum({ count: 1 }),
         body: comment.comment
       };
       setComments([commentObj, ...comments]);
     }
   };
-
-
 
   const loaded = () => (
     <article>
@@ -51,7 +53,7 @@ const Post = (props) => {
       <p>{post.body}</p>
       <section>
         {comments.map((comment, index) => (
-          <Comment {...comment} />
+          <Comment key={index} {...comment} />
         ))}
       </section>
       <section>
@@ -61,11 +63,9 @@ const Post = (props) => {
     </article>
   );
 
-  const invalidId = () => (
-    <InvalidPost postId={postId} />
-  );
+  const invalidId = () => <InvalidPost postId={postId} />;
 
-  return <>{post.title ? loaded() : invalidId()} </>
+  return <>{post.title ? loaded() : invalidId()} </>;
 };
 
 export default Post;
