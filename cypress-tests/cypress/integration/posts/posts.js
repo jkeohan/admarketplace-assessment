@@ -32,11 +32,11 @@ describe('testing posts', () => {
 		});
 	});
 
-	it('should confirm clicking on first post changes url', () => {
-		cy.get('@select').select('1')//.should('have.text', '100% Playground');
+	it('should confirm clicking on first post changes url to http://localhost:3000/posts/1', () => {
+		cy.get('@select').select('1'); //.should('have.text', '100% Playground');
 		cy.location().should((location) => {
-            // expect(location.hash).to.be.empty
-            expect(location.href).to.eq('http://localhost:3000/posts/1')
-	   });
-    })
+			expect(location.href).to.eq('http://localhost:3000/posts/1');
+		});
+	});
+    
 });
