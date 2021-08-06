@@ -1,0 +1,12 @@
+
+.comment-name {
+  text-align: left;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.comment-body {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}

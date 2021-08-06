@@ -1,0 +1,18 @@
+form {
+  display: flex;
+}
+
+.form-inputs {
+  display:flex;
+}
+
+.form-inputs input {
+  flex:1;
+}
+
+form button {
+  height: 50px;
+  width: 100px;
+  align-self: center;
+  margin: 20px;
+}
