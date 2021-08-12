@@ -2,7 +2,9 @@
 
 ## CodeSandbox 
 
-CodeSandbox was used to develop this react app and the live link is: <a href="https://urdfn.csb.app/" target="_">https://urdfn.csb.app/</a>
+CodeSandbox was used to develop this react app:
+ - <a href="https://urdfn.csb.app/" target="_">live link</a>
+ - <a href="https://codesandbox.io/s/assessment-admarket-fx71b" target="_">codebase link:</a>
 
 ## Running App Locally
 
